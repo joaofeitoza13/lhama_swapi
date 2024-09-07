@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "lhama-swapi"
+version = "0.1.0"
+description = "Practice with Request lib and API consumption"
+authors = ["João Feitoza <joaofeitoza.13@gmail.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.3"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.2"
+pylint = "^3.2.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
