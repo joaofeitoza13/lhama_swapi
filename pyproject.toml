@@ -13,7 +13,30 @@ requests = "^2.32.3"
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
 pylint = "^3.2.7"
+ruff = "^0.5.0"
+taskipy = "^1.13.0"
+pyproject-pre-commit = "^0.2.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+extend-exclude = ['migrations']
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.taskipy.tasks]
+lint = 'ruff check . && ruff check . --diff'   # Mostra infrações e como corrigir
+format = 'ruff check . --fix && ruff format .' # Corrige e formata de acordo com as convenções
+#run = 'fastapi dev pydo/app.py'                # Executa o projeto
+#pretest = 'task lint'                          # Linta código antes dos testes
+#test = 'pytest -s -x --cov=pydo -v'            # Executa testes verbosos com coverage
+#posttest = 'coverage html'
